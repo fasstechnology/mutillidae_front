@@ -1,7 +1,61 @@
 <?php include_once (dirname(__FILE__).'/includes/capture-data.php');?>
 
-<link rel="stylesheet" type="text/css" href="./styles/global-styles.css" />
+
 <div class="page-title">Capture Data</div>
+
+<div class="card card-info">
+    <div class="card-header">
+        <h3 class="card-title">Inicie sesión con su cuenta</h3>
+    </div>
+
+    <form action="index.php?page=login.php" method="post"  enctype="application/x-www-form-urlencoded" onsubmit="return onSubmitOfLoginForm(this);"	id="idLoginForm">
+
+		<input name="csrf-token" type="hidden" value="<?php echo $lNewCSRFTokenForNextRequest; ?>" />
+                
+
+		
+		<div class="card-body">
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Usuario</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputText" name="username" size="20" "
+			    <?php
+						if ($lEnableHTMLControls) {
+							echo('minlength="1" maxlength="15" required="required"');
+						}// end if
+					?>
+				>
+            </div>
+        </div>
+
+		<div class="form-group row">
+			<label for="inputPassword3" class="col-sm-2 col-form-label">Contraseña</label>
+				<div class="col-sm-10">
+					<input type="password" class="form-control" id="inputPassword3" name="password" size="20"
+					<?php
+						if ($lEnableHTMLControls) {
+							echo('minlength="1" maxlength="15" required="required"');
+						}// end if
+					?>
+				>
+	<br>
+	<br>
+				No tiene una cuenta? <a href="index.php?page=register.php">Regístrese aquí</a>
+
+				</div>
+		</div>
+	
+				
+
+		</div>
+                <!-- /.card-body -->
+		<div class="card-footer">                  
+			<button name="login-php-submit-button"  type="submit" class="btn btn-info" value="Login">Ingresar</button>							
+		</div>
+
+	</form>
+</div>
+
 
 <?php include_once (__ROOT__.'/includes/back-button.inc');?>
 <?php include_once (__ROOT__.'/includes/hints/hints-menu-wrapper.inc'); ?>

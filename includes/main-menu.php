@@ -7,7 +7,6 @@
 
 <div id="" class="user-panel mt-3 pb-3 mb-3 d-flex" text-align: left>
 
-
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item has-treeview menu-open"></li>
           <li class="nav-header"><FONT SIZE=5>Menú peincipal OWASP Mutillidae II</FONT></li>          

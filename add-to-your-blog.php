@@ -182,66 +182,82 @@
 	};// end JavaScript function onSubmitBlogEntry()
 </script>
 
-<div class="page-title">Welcome To The Blog</div>
+<div class="card card-info">
+    <div class="card-header">
+        <h3 class="card-title">Bienvenido al blog.</h3></div>
+
+    <form action="index.php?page=add-to-your-blog.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="return onSubmitBlogEntry(this);"	id="idBlogForm"></div>
+                <!-- /.card-body -->
+
+				<input name="csrf-token" type="hidden" value="<?php echo $lNewCSRFTokenForNextRequest; ?>" />
+            <span>
+                <a href="./index.php?page=view-someones-blog.php" style="text-decoration: none;">
+                <img style="vertical-align: middle;" src="./images/magnifying-glass-icon.jpeg" height="32px" width="32px" />
+                <span style="font-weight:bold;">&nbsp;Ver Blogs</span>
+                </a>
+            </span>
+                <table>
+                    <tr id="id-bad-blog-entry-tr" style="display: none;">
+                        <td class="error-message">
+						Error de validación: la entrada del blog no puede estar en blanco
+                        </td>
+                    </tr>
+                    <tr><td></td></tr>
+                    <tr>
+                        <td id="id-blog-form-header-td" >
+							<div class="callout callout-success"  >
+							Agregar blog para <?php echo $lLoggedInUser?>
+							</div>
+                        </td>
+                    </tr>
+                    <tr><td></td></tr>
+
+					<tr>
+                        <td class="" >
+							<div class="callout callout-success"  >
+							Nota: &lt;b&gt;,&lt;i&gt; y &lt;u&gt; ahora están permitidos en las entradas del blog
+							</div>
+                        </td>
+                    </tr>
+					
+
+                    <tr>
+                        <td>
+							<label>Digite el texto</label>
+							<div >
+							
+								<textarea name="blog_entry" rows="8" cols="65" autofocus="autofocus"
+										<?php 
+											if ($lEnableHTMLControls) {
+												echo('minlength="1" maxlength="100" required="required"');
+											}// end if
+										?>
+								></textarea>
+							</div>
+                        </td>
+                    </tr>
+                    <tr><td></td></tr>
+                    <tr>
+                        <td style="text-align:center;">
+						<button name="add-to-your-blog-php-submit-button" XSRFVulnerabilityArea="1"  type="submit" class="btn btn-info" value="Save Blog Entry">Guardar entrada al blog</button>	
+                        </td>
+                    </tr>
+                    <tr><td></td></tr>
+                </table>
+
+
+
+		<div class="card-footer">                  
+									
+		</div>
+
+	</form>
+</div>
 
 <?php include_once (__ROOT__.'/includes/back-button.inc'); ?>
 <?php include_once (__ROOT__.'/includes/hints/hints-menu-wrapper.inc'); ?>
 
-<fieldset>
-	<legend>Add New Blog Entry</legend>
-	<form 	action="index.php?page=add-to-your-blog.php" 
-			method="post" 
-			enctype="application/x-www-form-urlencoded" 
-			onsubmit="return onSubmitBlogEntry(this);"
-			id="idBlogForm"
-			>
-		<input name="csrf-token" type="hidden" value="<?php echo $lNewCSRFTokenForNextRequest; ?>" />
-		<span>
-			<a href="./index.php?page=view-someones-blog.php" style="text-decoration: none;">
-			<img style="vertical-align: middle;" src="./images/magnifying-glass-icon.jpeg" height="32px" width="32px" />
-			<span style="font-weight:bold;">&nbsp;View Blogs</span>
-			</a>
-		</span>
-		<table>
-			<tr id="id-bad-blog-entry-tr" style="display: none;">
-				<td class="error-message">
-					Validation Error: Blog entry cannot be blank
-				</td>
-			</tr>
-			<tr><td></td></tr>
-			<tr>
-				<td id="id-blog-form-header-td" class="form-header">
-					Add blog for <?php echo $lLoggedInUser?>
-				</td>
-			</tr>
-			<tr><td></td></tr>
-			<tr>
-				<td class="report-header">
-					Note: &lt;b&gt;,&lt;i&gt; and &lt;u&gt; are now allowed in blog entries
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<textarea 	name="blog_entry" rows="8" cols="65"
-								autofocus="autofocus"
-						<?php 
-							if ($lEnableHTMLControls) {
-								echo('minlength="1" maxlength="100" required="required"');
-							}// end if
-						?>
-					></textarea>
-				</td>
-			</tr>
-			<tr><td></td></tr>
-			<tr>
-				<td style="text-align:center;">
-					<input name="add-to-your-blog-php-submit-button" XSRFVulnerabilityArea="1" class="button" type="submit" value="Save Blog Entry" />
-				</td>
-			</tr>
-			<tr><td></td></tr>
-		</table>
-	</form>
-</fieldset>
+
 
 <?php
 	if ($lValidationFailed) {
@@ -257,7 +273,7 @@
 			/* Note that the logged in user could be used for SQL injection */
 			$lQueryResult = $SQLQueryHandler->getBlogRecord($lLoggedInUser);
 		} catch (Exception $e) {
-			echo $CustomErrorHandler->FormatError($e, "Error selecting blog entries for " . $lLoggedInUser . ": " . $lQuery);
+			echo $CustomErrorHandler->FormatError($e, "Error al seleccionar entradas de blog para " . $lLoggedInUser . ": " . $lQuery);
 		}//end try
 
 		try {
@@ -270,12 +286,13 @@
 				<span>
 					<a href="./index.php?page=view-someones-blog.php">
 						<img style="vertical-align: middle;" src="./images/magnifying-glass-icon.jpeg" height="32px" width="32px" />
-						<span style="font-weight:bold; text-decoration: none;">View Blogs</span>
+						<span style="font-weight:bold; text-decoration: none;">Ver blogs</span>
 					</a>
 				</span>';
-		echo '<table border="1px" width="90%" class="results-table">';
+				
+		echo '<table border="2px" width="90%" class="results-table">';
 	    echo ' 	<tr class="report-header">
-		    		<td colspan="4">'.$lQueryResult->num_rows.' Current Blog Entries</td>
+		    		<td colspan="4">'.$lQueryResult->num_rows.' Entradas de blog actuales</td>
 		    	</tr>
 		    	<tr class="report-header">
 		    		<td>&nbsp;</td>

@@ -66,7 +66,7 @@
    	}// end if
 ?>
 
-<div class="page-title">View Blogs</div>
+<div class="page-title">Ver los blogs</div>
 
 <?php include_once (__ROOT__.'/includes/back-button.inc');?>
 <?php include_once (__ROOT__.'/includes/hints/hints-menu-wrapper.inc'); ?>

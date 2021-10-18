@@ -51,7 +51,7 @@
 		    	lPasswordText += lPasswordCharset.charAt(Math.floor(Math.random() * lPasswordCharset.length));
 		    }// end for i
 			
-			document.getElementById("idPasswordInput").innerHTML = "Password: <span style=\"color:red;border-width:1px;border-color:black;\">" + lPasswordText + "</span>";
+			document.getElementById("idPasswordInput").innerHTML = "Contraseña: <span style=\"color:red;border-width:1px;border-color:black;\">" + lPasswordText + "</span>";
 			document.getElementById("idPasswordTableRow").style.display = "";
 			return false;
 
@@ -61,24 +61,20 @@
 	}// end function onSubmitOfGeneratorForm(/*HTMLFormElement*/ theForm)
 </script>
 
-<div class="page-title">Password Generator</div>
 
-<?php include_once (__ROOT__.'/includes/back-button.inc');?>
-<?php include_once (__ROOT__.'/includes/hints/hints-menu-wrapper.inc'); ?>
 
-<div id="id-generator-form-div">
-	<form 	enctype="application/x-www-form-urlencoded" 
-			id="idGeneratorForm">
-		<table>
-			<tr>
-				<td class="form-header">Password Generator</td>
-			</tr>
+<div class="card card-info" id="id-generator-form-div">
+    <div class="card-header">
+        <h3 class="card-title">Generador de contraseñas</h3>
+    </div>
+
+    <form enctype="application/x-www-form-urlencoded" id="idGeneratorForm">
+
+	<table>
 			<tr><td></td></tr>
 			<tr>
 				<td class="label"  style="text-align: center;">
-					Making strong passwords is important.
-					<br/>
-					Click the button below to generate a password.
+					Es importante crear contraseñas seguras. Haga clic en el botón de abajo para generar una contraseña.
 				</td>
 			</tr>
 			<tr><td></td></tr>
@@ -89,15 +85,28 @@
 				<td class="label" id="idPasswordInput"></td>
 			</tr>
 			<tr><td></td></tr>
-			<tr>
-				<td style="text-align:center;">
-					<input name="password-generator-php-submit-button" autofocus="autofocus" class="button" type="button" value="Generate Password" onclick="onSubmitOfGeneratorForm(this.form);" />
-				</td>
-			</tr>
-			<tr><td></td></tr>
 		</table>
+                
+
+		
+		
+		
+	
+				
+
+	
+                <!-- /.card-body -->
+		<div class="card-footer">                  
+			<button  name="password-generator-php-submit-button"  type="button" class="btn btn-info" value="Generate Password" onclick="onSubmitOfGeneratorForm(this.form);">Generar contraseña</button>							
+		</div>
+
 	</form>
 </div>
+
+
+<?php include_once (__ROOT__.'/includes/back-button.inc');?>
+<?php include_once (__ROOT__.'/includes/hints/hints-menu-wrapper.inc'); ?>
+
 
 <script>
 	try{
