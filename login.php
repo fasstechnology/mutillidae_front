@@ -115,8 +115,8 @@
 						}// end if
 					?>
 				>
-	<br>
-	<br>
+		<br>
+		<br>
 				No tiene una cuenta? <a href="index.php?page=register.php">Regístrese aquí</a>
 
 				</div>
